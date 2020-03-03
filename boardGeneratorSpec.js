@@ -32,10 +32,11 @@ describe("Tests the generation of a board", () => {
         const numberOfEmptyElements = (numberOfRows + numberOfColumns)/(numberOfRows/2);
         const randomlyGeneratedBoard = boardGenerator.generateBoardWithRandomElements();
         let counter = 0;
-        for(i=0;i< numberOfColumns;i++){
-            if(randomlyGeneratedBoard[i].includes(" ")){
-                counter++;
-            }
+        for(let i=0;i< numberOfColumns;i++){
+            for(let j=0;j< numberOfRows;j++)
+                if(randomlyGeneratedBoard[i][j] === " "){
+                    counter++;
+                }
         }
         expect(counter).toEqual(numberOfEmptyElements);
     });
