@@ -28,7 +28,7 @@ class BoardGenerator {
         return board;
     }
 
-    generateBoardWithRandomElements(){
+    generateBoardWithEmptyElements(){
         const numberOfEmptyElements = (this.numberOfRows + this.numberOfColumns)/(this.numberOfRows/2);
         const generatedBoard = this.generateBoard();
         for(let i=0;i<numberOfEmptyElements;i++){
@@ -42,6 +42,23 @@ class BoardGenerator {
             }
         }
         return generatedBoard;
+    }
+
+    generateGameBoard(){
+        const randomlyGeneratedBoard = this.generateBoardWithEmptyElements();
+        const weapons = [{id:1,symbol:"/"},{id:2,symbol:":"},{id:3,symbol:"|"},{id:4,symbol:"-"}]
+        for(let i=0;i<4;i++){
+            const randomNumberRow = generateRandomNumberBetween(0,this.numberOfRows-1);
+            const randomNumberColumn = generateRandomNumberBetween(0,this.numberOfColumns-1);
+            const chosenColumn = randomlyGeneratedBoard[randomNumberColumn];
+            if(chosenColumn[randomNumberRow] === " " || chosenColumn[randomNumberRow].symbol === "/" || chosenColumn[randomNumberRow].symbol===":" || chosenColumn[randomNumberRow].symbol==="|" || chosenColumn[randomNumberRow].symbol==="-"){
+                i--;
+            }else{
+                chosenColumn.splice(randomNumberRow,1,weapons[i]);
+            }
+        }
+        console.log(randomlyGeneratedBoard);
+        return randomlyGeneratedBoard;
     }
 }
 
