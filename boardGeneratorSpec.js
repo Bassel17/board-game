@@ -1,4 +1,4 @@
-const BoardGenerator = require("../boardGenerator");
+const BoardGenerator = require("./boardGenerator");
 
 const arrayConsestsOfStars = (array) => {
     for(let i=0; i++<array.length; i++){
@@ -26,5 +26,19 @@ describe("Tests the generation of a board", () => {
 
     it("the number of columns is numberOfColumns", () => {
         expect(generatedBoard.length).toEqual(numberOfColumns);
+    });
+
+    it("the board contains empty elements", () => {
+        const numberOfEmptyElements = (numberOfRows + numberOfColumns)/(numberOfRows/2);
+        const randomlyGeneratedBoard = boardGenerator.generateBoardWithEmptyElements();
+        let counter = 0;
+        for(let i=0;i< numberOfColumns;i++){
+            for(let j=0;j< numberOfRows;j++){
+                if(randomlyGeneratedBoard[i][j] === " "){
+                    counter++;
+                }
+            }
+        }
+        expect(counter).toEqual(numberOfEmptyElements);
     });
 });
