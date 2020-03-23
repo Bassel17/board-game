@@ -63,4 +63,4 @@ class BoardGenerator {
     }
 }
 
-module.exports = BoardGenerator;
+//module.exports = BoardGenerator;
