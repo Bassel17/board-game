@@ -29,7 +29,7 @@ describe("Tests the generation of a board", () => {
     });
 
     it("the board contains empty elements", () => {
-        const numberOfEmptyElements = (numberOfRows * numberOfColumns)/(numberOfRows + numberOfColumns);
+        const numberOfEmptyElements = 2*(numberOfRows * numberOfColumns)/(numberOfRows + numberOfColumns);
         const randomlyGeneratedBoard = boardGenerator.generateBoardWithEmptyElements();
         let counter = 0;
         for(let i=0;i< numberOfColumns;i++){

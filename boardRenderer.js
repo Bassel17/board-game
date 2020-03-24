@@ -7,37 +7,37 @@ class BoardRenderer{
 
     renderBlock(){
         const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:grey;padding:50px;display:inline");
+        div.setAttribute("style", "background-color:grey;padding:50px;display:inline;border:1px solid white");
         return div;
     }
 
     renderObstacle(){
         const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:black;padding:50px;display:inline");
+        div.setAttribute("style", "background-color:black;padding:50px;display:inline;border:1px solid white");
         return div;
     }
 
     renderSword(){
         const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:yellow;padding:50px;display:inline");
+        div.setAttribute("style", "background-color:yellow;padding:50px;display:inline;border:1px solid white");
         return div;
     }
 
     renderGun(){
         const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:blue;padding:50px;display:inline");
+        div.setAttribute("style", "background-color:blue;padding:50px;display:inline;border:1px solid white");
         return div;
     }
 
     renderKnife(){
         const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:red;padding:50px;display:inline");
+        div.setAttribute("style", "background-color:red;padding:50px;display:inline;border:1px solid white");
         return div;
     }
 
     renderBomb(){
         const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:pink;padding:50px;display:inline");
+        div.setAttribute("style", "background-color:pink;padding:50px;display:inline;border:1px solid white");
         return div;
     }
 
@@ -52,26 +52,32 @@ class BoardRenderer{
                 switch(Element.symbol){
                     case "*":
                         const block = this.renderBlock();
+                        block.setAttribute("id",`block_${Element.id[0]}-${Element.id[1]}`);
                         div.appendChild(block);
                         break;
                     case " ":
                         const obstacle = this.renderObstacle();
+                        obstacle.setAttribute("id",`obstacle_${Element.id[0]}-${Element.id[1]}`);
                         div.appendChild(obstacle);
                         break;
                     case "/":
                         const sword = this.renderSword();
+                        sword.setAttribute("id",`sword_${Element.id[0]}-${Element.id[1]}`);
                         div.appendChild(sword);
                         break;
                     case ":":
                         const gun = this.renderGun();
+                        gun.setAttribute("id",`gun_${Element.id[0]}-${Element.id[1]}`);
                         div.appendChild(gun);
                         break;
                     case "|":
                         const knife = this.renderKnife();
+                        knife.setAttribute("id",`knife_${Element.id[0]}-${Element.id[1]}`);
                         div.appendChild(knife);
                         break;
                     case "-":
                         const bomb = this.renderBomb();
+                        bomb.setAttribute("id",`bomb_${Element.id[0]}-${Element.id[1]}`);
                         div.appendChild(bomb);
                         break;
                 }

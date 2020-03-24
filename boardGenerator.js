@@ -32,7 +32,7 @@ class BoardGenerator {
     }
 
     generateBoardWithEmptyElements(){
-        const numberOfEmptyElements = (this.numberOfRows * this.numberOfColumns)/(this.numberOfRows + this.numberOfColumns);
+        const numberOfEmptyElements = 2*(this.numberOfRows * this.numberOfColumns)/(this.numberOfRows + this.numberOfColumns);
         const generatedBoard = this.generateBoard();
         for(let i=0;i<numberOfEmptyElements;i++){
             const randomNumberRow = generateRandomNumberBetween(0,this.numberOfRows-1);
@@ -65,4 +65,4 @@ class BoardGenerator {
     }
 }
 
-//module.exports = BoardGenerator;
+module.exports = BoardGenerator;
