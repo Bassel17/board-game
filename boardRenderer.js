@@ -7,37 +7,43 @@ class BoardRenderer{
 
     renderBlock(){
         const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:grey;padding:50px;display:inline;border:1px solid white");
+        div.setAttribute("style", "background-color:grey;padding:2em;display:inline;border:1px solid white");
         return div;
     }
 
     renderObstacle(){
         const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:black;padding:50px;display:inline;border:1px solid white");
+        div.setAttribute("style", "background-color:black;padding:2em;display:inline;border:1px solid white");
         return div;
     }
 
     renderSword(){
         const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:yellow;padding:50px;display:inline;border:1px solid white");
+        div.setAttribute("style", "background-color:yellow;padding:2em;display:inline;border:1px solid white");
         return div;
     }
 
     renderGun(){
         const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:blue;padding:50px;display:inline;border:1px solid white");
+        div.setAttribute("style", "background-color:blue;padding:2em;display:inline;border:1px solid white");
         return div;
     }
 
     renderKnife(){
         const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:red;padding:50px;display:inline;border:1px solid white");
+        div.setAttribute("style", "background-color:red;padding:2em;display:inline;border:1px solid white");
         return div;
     }
 
     renderBomb(){
         const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:pink;padding:50px;display:inline;border:1px solid white");
+        div.setAttribute("style", "background-color:pink;padding:2em;display:inline;border:1px solid white");
+        return div;
+    }
+
+    renderPerson(){
+        const div = this.document.createElement("div");
+        div.setAttribute("style", "background-color:brown;padding:2em;display:inline;border:1px solid white");
         return div;
     }
 
@@ -79,6 +85,11 @@ class BoardRenderer{
                         const bomb = this.renderBomb();
                         bomb.setAttribute("id",`bomb_${Element.id[0]}-${Element.id[1]}`);
                         div.appendChild(bomb);
+                        break;
+                    case "$":
+                        const person = this.renderPerson();
+                        person.setAttribute("id",`person_${Element.id[0]}-${Element.id[1]}`);
+                        div.appendChild(person);
                         break;
                 }
             });
