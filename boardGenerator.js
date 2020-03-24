@@ -21,9 +21,12 @@ class BoardGenerator {
 
     generateBoard(){
         const board = [];
-        const row = this.generateRow();
         for(let i=0; i<this.numberOfColumns ; i++){
-            board.push([...row]);
+            const row = this.generateRow();
+            row.forEach((Element)=>{
+                Element.id.push(i)
+            });
+            board.push(row);
         }
         return board;
     }
@@ -58,7 +61,6 @@ class BoardGenerator {
                 chosenColumn.splice(randomNumberRow,1,weapons[i]);
             }
         }
-        console.log(randomlyGeneratedBoard);
         return randomlyGeneratedBoard;
     }
 }
