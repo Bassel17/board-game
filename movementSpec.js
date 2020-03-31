@@ -42,6 +42,22 @@ describe("Tests the generation of a board", () => {
         expect(movement.isPlayer()).toBe(true);
     });
 
+    it("return true element is a Block", () =>{
+        const player = "person_2-0";
+        const block = "block_3-0";
+        const movement = new Movement(board,player,block);
+
+        expect(movement.isBlock()).toBe(true);
+    });
+
+    it("return false if not element is not a block", () =>{
+        const player = "person_2-0";
+        const block = "obstacle_3-0";
+        const movement = new Movement(board,player,block);
+
+        expect(movement.isBlock()).toBe(false);
+    });
+
     it("should return a the board with player and position switched", () =>{
         const player = "person_0-1";
         const block = "block_0-2";

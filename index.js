@@ -1,4 +1,4 @@
-const boardGenerator = new BoardGenerator(4,4);
+const boardGenerator = new BoardGenerator();
 let Board = boardGenerator.generateGameBoard();
 const root = document.getElementById("root");
 render(Board);
@@ -17,9 +17,13 @@ root.addEventListener("click",(event)=>{
     if(elementsClicked.length === 2){
         const movement = new Movement(Board,elementsClicked[0],elementsClicked[1]);
         if(movement.isPlayer()){
-            const Board = movement.getSwitchedBoard();
-            render(Board);
-            elementsClicked=[];
+            if(movement.isBlock()){
+                const Board = movement.getSwitchedBoard();
+                render(Board);
+                elementsClicked=[];
+            }else{
+                elementsClicked.pop();
+            }
         }else{
             elementsClicked.shift();
         }

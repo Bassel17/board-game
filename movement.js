@@ -58,6 +58,11 @@ class Movement {
         return player[0] === "person";
     }
 
+    isBlock(){
+        const block = this.position.split("_");
+        return block[0] === "block";
+    }
+
     getSwitchedBoard(){
         const player= this.getJsonStructure()[0];
         const block= this.getJsonStructure()[1];
