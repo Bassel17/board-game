@@ -9,10 +9,11 @@ let elementsClicked = [];
 root.addEventListener("click",(event)=>{
     let element = spreadElementID(event.target.id);
     if(element.symbol === "$"){
-       elementsClicked.push(element) 
+       elementsClicked.push(element);
     }else{
         if(elementsClicked.length === 1){
             elementsClicked.push(element);
+            console.log(elementsClicked[0],elementsClicked[1]);
             switchTwoElements(elementsClicked[0],elementsClicked[1]);
             elementsClicked=[];
         }

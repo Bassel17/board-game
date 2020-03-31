@@ -1,6 +1,6 @@
 class BoardRenderer{
 
-    constructor(randomlyGeneratedBoard,document,root){
+    constructor(randomlyGeneratedBoard,document){
         this.board = randomlyGeneratedBoard;
         this.document = document;
     }
