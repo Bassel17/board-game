@@ -17,7 +17,7 @@ root.addEventListener("click",(event)=>{
     if(elementsClicked.length === 2){
         const movement = new Movement(Board,elementsClicked[0],elementsClicked[1]);
         if(movement.isPlayer()){
-            if(movement.isBlock()){
+            if(movement.isBlock() && movement.inReach()){
                 const Board = movement.getSwitchedBoard();
                 render(Board);
                 elementsClicked=[];

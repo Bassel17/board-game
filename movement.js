@@ -63,9 +63,13 @@ class Movement {
         return block[0] === "block";
     }
 
+    inReach(){
+        const [player,block] = this.getJsonStructure();
+        return (player.id[0] === block.id[0] && (block.id[1]===player.id[1]+1 || block.id[1]===player.id[1]-1)) || (player.id[1] === block.id[1] && (block.id[0]===player.id[0]+1 || block.id[0]===player.id[0]-1));
+    }
+
     getSwitchedBoard(){
-        const player= this.getJsonStructure()[0];
-        const block= this.getJsonStructure()[1];
+        const [player,block] = this.getJsonStructure();
         const playerPosition = [...player.id];
         const blockPosition = [...block.id];
         const copyPlayer = {...player};
