@@ -3,7 +3,7 @@ const BoardRenderer = require("./boardRenderer");
 const Movement = require("./movement");
 
 const boardGenerator = new BoardGenerator();
-let Board = boardGenerator.generateGameBoard();
+let Board = boardGenerator.generateGameBoardWithPlayers();
 const root = document.getElementById("root");
 render(Board);
 function render(board){

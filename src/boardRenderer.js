@@ -41,9 +41,9 @@ class BoardRenderer{
         return div;
     }
 
-    renderPerson(){
+    renderPerson(color){
         const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:brown;padding:2em;display:inline;border:1px solid white");
+        div.setAttribute("style", `background-color:${color};padding:2em;display:inline;border:1px solid white`);
         return div;
     }
 
@@ -87,9 +87,14 @@ class BoardRenderer{
                         div.appendChild(bomb);
                         break;
                     case "$":
-                        const person = this.renderPerson();
+                        const person = this.renderPerson('brown');
                         person.setAttribute("id",`person_${Element.id[0]}-${Element.id[1]}`);
                         div.appendChild(person);
+                        break;
+                    case "&":
+                        const second_person = this.renderPerson('white');
+                        second_person.setAttribute("id",`secondperson_${Element.id[0]}-${Element.id[1]}`);
+                        div.appendChild(second_person);
                         break;
                 }
             });

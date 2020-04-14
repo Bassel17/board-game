@@ -14,6 +14,9 @@ function spreadElementID(ID){
 function getSymbol(type){
     let symbol;
     switch(type){
+        case "secondperson":
+            symbol="&";
+            break;
         case "person":
             symbol="$";
             break;
@@ -55,7 +58,7 @@ class Movement {
 
     isPlayer(){
         const player = this.player.split("_");
-        return player[0] === "person";
+        return player[0] === "person" || "secondperson";
     }
 
     isBlock(){

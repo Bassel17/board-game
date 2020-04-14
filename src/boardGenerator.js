@@ -63,6 +63,25 @@ class BoardGenerator {
         }
         return randomlyGeneratedBoard;
     }
+
+    generateGameBoardWithPlayers(){
+
+        const randomlyGeneratedBoard = this.generateGameBoard();
+        const players = [{id:5,symbol:"$"},{id:6,symbol:"&"}]
+        for(let i=0;i<players.length;i++){
+            const randomNumberRow = generateRandomNumberBetween(0,this.numberOfRows-1);
+            const randomNumberColumn = generateRandomNumberBetween(0,this.numberOfColumns-1);
+            const chosenColumn = randomlyGeneratedBoard[randomNumberColumn];
+            if(chosenColumn[randomNumberRow] === " " || chosenColumn[randomNumberRow].symbol === "/" || chosenColumn[randomNumberRow].symbol===":" || chosenColumn[randomNumberRow].symbol==="|" || chosenColumn[randomNumberRow].symbol==="-" || chosenColumn[randomNumberRow].symbol==="$" || chosenColumn[randomNumberRow].symbol==="&"){
+                i--;
+            }else{
+                players[i].id=[randomNumberRow,randomNumberColumn];
+                chosenColumn.splice(randomNumberRow,1,players[i]);
+            }
+        }
+        return randomlyGeneratedBoard;
+
+    }
 }
 
 module.exports = BoardGenerator;
