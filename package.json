@@ -9,7 +9,8 @@
   "scripts": {
     "build": "webpack --config=webpack.config.prod.js",
     "build-dev": "webpack --config=webpack.config.dev.js",
-    "start": "webpack-dev-server --config=webpack.config.dev.js --open"
+    "start": "webpack-dev-server --config=webpack.config.dev.js --open",
+    "test" : "jasmine"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

@@ -63,6 +63,16 @@ class Movement {
         return block[0] === "block";
     }
 
+    isObstacle(element){
+        const obstacle = element.split("_");
+        return obstacle[0] === "obstacle" ;
+    }
+
+    isWeapon(element){
+        const weapon = element.split("_");
+        return weapon[0] === "sword" || weapon[0] === "gun" || weapon[0] === "knife" || weapon[0] === "bomb";
+    }
+
     inReach(){
         const [player,block] = this.getJsonStructure();
         return (player.id[0] === block.id[0] && (block.id[1]===player.id[1]+1 || block.id[1]===player.id[1]-1)) || (player.id[1] === block.id[1] && (block.id[0]===player.id[0]+1 || block.id[0]===player.id[0]-1));
