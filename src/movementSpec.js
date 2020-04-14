@@ -96,7 +96,9 @@ describe("Tests the generation of a board", () => {
     it("return true it's an obstacle", () =>{
         const player = "person_2-0";
         const block = "block_3-0";
-        const obstacle = "obstacle_2-1";
+        const obstacle = {
+            symbol:" "
+        }
         const movement = new Movement(board,player,block);
         expect(movement.isObstacle(obstacle)).toBe(true);
     });
@@ -104,7 +106,9 @@ describe("Tests the generation of a board", () => {
     it("return false it's not an obstacle", () =>{
         const player = "person_2-0";
         const block = "block_3-0";
-        const obstacle = "block_2-1";
+        const obstacle = {
+            symbol:"*"
+        }
         const movement = new Movement(board,player,block);
         expect(movement.isObstacle(obstacle)).toBe(false);
     });
@@ -112,15 +116,19 @@ describe("Tests the generation of a board", () => {
     it("return true it's a weapon", () =>{
         const player = "person_2-0";
         const block = "block_3-0";
-        const weapon = "sword_2-1";
+        const weapon = {
+            symbol:"/"
+        };
         const movement = new Movement(board,player,block);
         expect(movement.isWeapon(weapon)).toBe(true);
     });
 
-    it("return true it's a weapon", () =>{
+    it("return false if it's not a weapon", () =>{
         const player = "person_2-0";
         const block = "block_3-0";
-        const weapon = "block_2-1";
+        const weapon = {
+            symbol:"*"
+        };
         const movement = new Movement(board,player,block);
         expect(movement.isWeapon(weapon)).toBe(false);
     });
