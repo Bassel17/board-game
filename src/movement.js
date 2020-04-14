@@ -74,6 +74,11 @@ class Movement {
         return weapon.symbol === getSymbol("sword") || weapon.symbol === getSymbol("gun") || weapon.symbol === getSymbol("knife") || weapon.symbol === getSymbol("bomb");
     }
 
+    isWeaponID(element){
+        const weapon = this.position.split("_");
+        return weapon[0] === "sword" || weapon[0] === "gun" || weapon[0] === "knife" || weapon[0] === "bomb";
+    }
+
     isBlockFromJson(block){
         return block.symbol === "*";
     }
@@ -150,6 +155,21 @@ class Movement {
         copyBlock.id = [...playerPosition];
         this.board[playerPosition[1]][playerPosition[0]] = {...copyBlock};
         this.board[blockPosition[1]][blockPosition[0]] = {...copyPlayer};
+        return this.board;
+    }
+
+    pickupWeapon(elementID){
+        const [player,block] = this.getJsonStructure();
+        const weapon = spreadElementID(elementID);
+        const playerPosition = [...player.id];
+        const weaponPosition = [...weapon.id];
+        const copyPlayer = {...player};
+        const copyWeapon = {...weapon};
+        copyPlayer.id = [...weaponPosition];
+        copyWeapon.id = [...playerPosition];
+        copyWeapon.symbol = "*";
+        this.board[playerPosition[1]][playerPosition[0]] = {...copyWeapon};
+        this.board[weaponPosition[1]][weapongitPosition[0]] = {...copyPlayer};
         return this.board;
     }
 

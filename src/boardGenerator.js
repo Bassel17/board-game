@@ -49,12 +49,12 @@ class BoardGenerator {
 
     generateGameBoard(){
         const randomlyGeneratedBoard = this.generateBoardWithEmptyElements();
-        const weapons = [{id:1,symbol:"/"},{id:2,symbol:":"},{id:3,symbol:"|"},{id:4,symbol:"-"},{id:5,symbol:"$"}]
+        const weapons = [{id:1,symbol:"/"},{id:2,symbol:":"},{id:3,symbol:"|"},{id:4,symbol:"-"}]
         for(let i=0;i<weapons.length;i++){
             const randomNumberRow = generateRandomNumberBetween(0,this.numberOfRows-1);
             const randomNumberColumn = generateRandomNumberBetween(0,this.numberOfColumns-1);
             const chosenColumn = randomlyGeneratedBoard[randomNumberColumn];
-            if(chosenColumn[randomNumberRow] === " " || chosenColumn[randomNumberRow].symbol === "/" || chosenColumn[randomNumberRow].symbol===":" || chosenColumn[randomNumberRow].symbol==="|" || chosenColumn[randomNumberRow].symbol==="-" || chosenColumn[randomNumberRow].symbol==="$"){
+            if(chosenColumn[randomNumberRow] === " " || chosenColumn[randomNumberRow].symbol === "/" || chosenColumn[randomNumberRow].symbol===":" || chosenColumn[randomNumberRow].symbol==="|" || chosenColumn[randomNumberRow].symbol==="-"){
                 i--;
             }else{
                 weapons[i].id=[randomNumberRow,randomNumberColumn];

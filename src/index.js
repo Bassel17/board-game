@@ -25,6 +25,10 @@ root.addEventListener("click",(event)=>{
                 const Board = movement.getSwitchedBoard();
                 render(Board);
                 elementsClicked=[];
+            }else if(movement.isWeaponID(elementsClicked[1])){
+                const Board = movement.pickupWeapon(elementsClicked[1]);
+                render(Board);
+                elementsClicked=[];
             }else{
                 elementsClicked.pop();
             }
