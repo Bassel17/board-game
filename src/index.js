@@ -1,8 +1,18 @@
-const BoardGenerator = require("./boardGenerator");
-const BoardRenderer = require("./boardRenderer");
-const Movement = require("./movement");
+const {
+    getJsonStructureOfElementWith,
+    getSymbol,
+    isPlayer,
+    isBlock,
+    isObstacle,
+    isWeapon,
+    playerCanMoveOn,
+    getListOfBlocksPLayerCanMoveOn
+} = require("./HelperFunctions/helperFunctions");
 
-const boardGenerator = new BoardGenerator();
+const BoardGenerator = require("./BoardGenerator/boardGenerator");
+const BoardRenderer = require("./BoardRenderer/boardRenderer");
+const Movement = require("./Movement/movement");
+const boardGenerator = new BoardGenerator(8,8);
 let Board = boardGenerator.generateGameBoardWithPlayers();
 const root = document.getElementById("root");
 render(Board);
@@ -12,28 +22,3 @@ function render(board){
     root.innerHTML="";
     root.appendChild(renderedBoard);
 }
-
-let elementsClicked = [];
-
-root.addEventListener("click",(event)=>{
-    const element = event.target.id;
-    elementsClicked.push(element);
-    if(elementsClicked.length === 2){
-        const movement = new Movement(Board,elementsClicked[0],elementsClicked[1]);
-        if(movement.isPlayer()){
-            if(movement.isBlock() && movement.inReach()){
-                const Board = movement.getSwitchedBoard();
-                render(Board);
-                elementsClicked=[];
-            }else if(movement.isWeaponID(elementsClicked[1])){
-                const Board = movement.pickupWeapon(elementsClicked[1]);
-                render(Board);
-                elementsClicked=[];
-            }else{
-                elementsClicked.pop();
-            }
-        }else{
-            elementsClicked.shift();
-        }
-    }
-});
