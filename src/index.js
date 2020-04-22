@@ -1,5 +1,6 @@
 const {
     getJsonStructureOfElementWith,
+    transformToID,
     getSymbol,
     isPlayer,
     isBlock,
@@ -40,14 +41,13 @@ let villianID = VillianElement[0].id;
 
 game.start(hero);
 let listOfBlocksPLayerCanMoveOn;
-let ID;
 function start(){
     if(game.turn === "hero"){
-        ID = heroID;
         listOfBlocksPLayerCanMoveOn = getListOfBlocksPLayerCanMoveOn(Board,getJsonStructureOfElementWith(heroID));
+        onClickListener(heroID,listOfBlocksPLayerCanMoveOn);
     }else{
-        ID = villianID;
         listOfBlocksPLayerCanMoveOn = getListOfBlocksPLayerCanMoveOn(Board,getJsonStructureOfElementWith(villianID));
+        onClickListener(villianID,listOfBlocksPLayerCanMoveOn);
     }
 }
 
@@ -65,19 +65,24 @@ function updatePlayers(){
     villianID = VillianElement[0].id;
 }
 
-function onClickListener(ID){
-    document.addEventListener("click",(event)=>{
-        const elementClicked = event.target.id;
-        if(listOfBlocksPLayerCanMoveOn.some((element)=>(element.id[0] === getJsonStructureOfElementWith(elementClicked).id[0])&&(element.id[1] === getJsonStructureOfElementWith(elementClicked).id[1]))){
-            const movement = new Movement(Board,ID,elementClicked);
-            Board = movement.getSwitchedBoard();
-            render(Board);
-            updatePlayers();
-            listOfBlocksPLayerCanMoveOn = [];
-            game.moved();
-            start();
-        }
+function onClickListener(ID,list){
+
+    list.forEach((element)=>{
+        const elementID = transformToID(element);
+        console.log(elementID);
+        const elementTag = document.getElementById(elementID);
+        elementTag.addEventListener('click',(event)=>{
+            const elementClicked = event.target.id;
+            if(listOfBlocksPLayerCanMoveOn.some((element)=>(element.id[0] === getJsonStructureOfElementWith(elementClicked).id[0])&&(element.id[1] === getJsonStructureOfElementWith(elementClicked).id[1]))){
+                const movement = new Movement(Board,ID,elementClicked);
+                Board = movement.getSwitchedBoard();
+                render(Board);
+                updatePlayers();
+                listOfBlocksPLayerCanMoveOn = [];
+                game.moved();
+                start();
+            }
+        });
     });
 }
 start();
-onClickListener(ID);

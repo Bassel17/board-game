@@ -29,6 +29,37 @@ const getSymbol = (type) => {
     return symbol;
 }
 
+const getName = (symbol) => {
+    let name;
+    switch(symbol){
+        case "secondperson":
+            name="secondperson";
+            break;
+        case "$":
+            name="person";
+            break;
+        case "*":
+            name="block"
+            break;
+        case " ":
+            name="obstacle";
+            break;
+        case "/":
+            name="sword";
+            break;
+        case ":":
+            name="gun";
+            break;
+        case "|":
+            name = "knife";
+            break;
+        case "-":
+            name = "bomb"
+            break;
+    }
+    return name;
+}
+
 const getJsonStructureOfElementWith = (ID) => {
     const arrayOfTypeAndPosition = ID.split("_");
     const arrayOfElementPosition = arrayOfTypeAndPosition[1].split("-");
@@ -40,6 +71,10 @@ const getJsonStructureOfElementWith = (ID) => {
     }
 
     return elementDetails
+}
+
+const transformToID = (element) => {
+    return `${getName(element.symbol)}_${element.id[0]}-${element.id[1]}`
 }
 
 const isPlayer = (player) => {
@@ -143,3 +178,4 @@ exports.isObstacle = isObstacle;
 exports.isWeapon = isWeapon;
 exports.playerCanMoveOn = playerCanMoveOn;
 exports.getListOfBlocksPLayerCanMoveOn = getListOfBlocksPLayerCanMoveOn;
+exports.transformToID = transformToID;
