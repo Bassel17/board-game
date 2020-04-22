@@ -95,7 +95,7 @@ class BoardRenderer{
                     case "&":
                         const second_person = this.renderPerson('white');
                         second_person.setAttribute("id",`secondperson_${Element.id[0]}-${Element.id[1]}`);
-                        person.setAttribute("class","villian");
+                        second_person.setAttribute("class","villian");
                         div.appendChild(second_person);
                         break;
                 }
