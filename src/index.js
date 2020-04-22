@@ -8,10 +8,11 @@ const {
     playerCanMoveOn,
     getListOfBlocksPLayerCanMoveOn
 } = require("./HelperFunctions/helperFunctions");
-
 const BoardGenerator = require("./BoardGenerator/boardGenerator");
 const BoardRenderer = require("./BoardRenderer/boardRenderer");
 const Movement = require("./Movement/movement");
+const Game = require("./Game/Game");
+
 const boardGenerator = new BoardGenerator(8,8);
 let Board = boardGenerator.generateGameBoardWithPlayers();
 const root = document.getElementById("root");
