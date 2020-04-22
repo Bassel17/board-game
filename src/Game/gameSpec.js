@@ -1,4 +1,4 @@
-const Game = require("./Game");
+const Game = require("./game");
 const {hero,villian} = require("./playerStub");
 
 describe("testing game behavior class", ()=>{

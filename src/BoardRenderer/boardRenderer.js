@@ -89,11 +89,13 @@ class BoardRenderer{
                     case "$":
                         const person = this.renderPerson('brown');
                         person.setAttribute("id",`person_${Element.id[0]}-${Element.id[1]}`);
+                        person.setAttribute("class","hero");
                         div.appendChild(person);
                         break;
                     case "&":
                         const second_person = this.renderPerson('white');
                         second_person.setAttribute("id",`secondperson_${Element.id[0]}-${Element.id[1]}`);
+                        person.setAttribute("class","villian");
                         div.appendChild(second_person);
                         break;
                 }
