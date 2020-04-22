@@ -22,7 +22,7 @@ class Movement {
 
     pickupWeapon(elementID){
         const  player= this.player;
-        const weapon = spreadElementID(elementID);
+        const weapon = getJsonStructureOfElementWith(elementID);
         const playerPosition = [...player.id];
         const weaponPosition = [...weapon.id];
         const copyPlayer = {...player};
