@@ -69,40 +69,48 @@ function onClickListener(ID,list,player){
 
     list.forEach((element)=>{
         if(isBlock(element)){
-            const elementID = transformToID(element);
-            const elementTag = document.getElementById(elementID);
-            elementTag.addEventListener('click',(event)=>{
-                const elementClicked = event.target.id;
-                if(listOfBlocksPLayerCanMoveOn.some((element)=>(element.id[0] === getJsonStructureOfElementWith(elementClicked).id[0])&&(element.id[1] === getJsonStructureOfElementWith(elementClicked).id[1]))){
-                    const movement = new Movement(Board,ID,elementClicked);
-                    Board = movement.getSwitchedBoard();
-                    render(Board);
-                    updatePlayers();
-                    listOfBlocksPLayerCanMoveOn = [];
-                    game.moved();
-                    start();
-                }
-            });
+            movePlayerOnBlock(element,ID);
         }else{
-            const elementID = transformToID(element);
-            const elementTag = document.getElementById(elementID);
-            elementTag.addEventListener('click',(event)=>{
-                const elementClicked = event.target.id;
-                if(listOfBlocksPLayerCanMoveOn.some((element)=>(element.id[0] === getJsonStructureOfElementWith(elementClicked).id[0])&&(element.id[1] === getJsonStructureOfElementWith(elementClicked).id[1]))){
-                    const movement = new Movement(Board,ID,elementClicked);
-                    Board = movement.pickupWeapon(elementID);
-                    player.pickUp({
-                        name:"sword",
-                        power: 100
-                    });
-                    render(Board);
-                    updatePlayers();
-                    listOfBlocksPLayerCanMoveOn = [];
-                    game.moved();
-                    start();
-                }
-            });
+            movePlayerOnWeapon(element,ID,player);
         }
     });
 }
 start();
+
+function movePlayerOnBlock(element,ID){
+    const elementID = transformToID(element);
+    const elementTag = document.getElementById(elementID);
+    elementTag.addEventListener('click',(event)=>{
+        const elementClicked = event.target.id;
+        if(listOfBlocksPLayerCanMoveOn.some((element)=>(element.id[0] === getJsonStructureOfElementWith(elementClicked).id[0])&&(element.id[1] === getJsonStructureOfElementWith(elementClicked).id[1]))){
+            const movement = new Movement(Board,ID,elementClicked);
+            Board = movement.getSwitchedBoard();
+            render(Board);
+            updatePlayers();
+            listOfBlocksPLayerCanMoveOn = [];
+            game.moved();
+            start();
+        }
+    });
+}
+
+function movePlayerOnWeapon(element,ID,player){
+    const elementID = transformToID(element);
+    const elementTag = document.getElementById(elementID);
+    elementTag.addEventListener('click',(event)=>{
+        const elementClicked = event.target.id;
+        if(listOfBlocksPLayerCanMoveOn.some((element)=>(element.id[0] === getJsonStructureOfElementWith(elementClicked).id[0])&&(element.id[1] === getJsonStructureOfElementWith(elementClicked).id[1]))){
+            const movement = new Movement(Board,ID,elementClicked);
+            Board = movement.pickupWeapon(elementID);
+            player.pickUp({
+                name:"sword",
+                power: 100
+            });
+            render(Board);
+            updatePlayers();
+            listOfBlocksPLayerCanMoveOn = [];
+            game.moved();
+            start();
+        }
+    });
+}
