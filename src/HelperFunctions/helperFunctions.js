@@ -170,6 +170,19 @@ const getListOfBlocksPLayerCanMoveOn = (board,player) => {
     
 }
 
+const getPower = (weaponName) => {
+    switch(weaponName){
+        case "sword":
+            return 100;
+        case "knife":
+            return 80;
+        case "gun":
+            return 150;
+        case "bomb":
+            return 200;
+    }
+}
+
 exports.getSymbol = getSymbol;
 exports.getJsonStructureOfElementWith = getJsonStructureOfElementWith;
 exports.isPlayer = isPlayer;
@@ -179,3 +192,5 @@ exports.isWeapon = isWeapon;
 exports.playerCanMoveOn = playerCanMoveOn;
 exports.getListOfBlocksPLayerCanMoveOn = getListOfBlocksPLayerCanMoveOn;
 exports.transformToID = transformToID;
+exports.getName = getName;
+exports.getPower = getPower;

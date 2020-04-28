@@ -7,7 +7,9 @@ const {
     isObstacle,
     isWeapon,
     playerCanMoveOn,
-    getListOfBlocksPLayerCanMoveOn
+    getListOfBlocksPLayerCanMoveOn,
+    getName,
+    getPower
 } = require("./HelperFunctions/helperFunctions");
 const BoardGenerator = require("./BoardGenerator/boardGenerator");
 const BoardRenderer = require("./BoardRenderer/boardRenderer");
@@ -95,6 +97,8 @@ function movePlayerOnBlock(element,ID){
 }
 
 function movePlayerOnWeapon(element,ID,player){
+    const weaponName = getName(element.symbol);
+    const weaponPower = getPower(weaponName);
     const elementID = transformToID(element);
     const elementTag = document.getElementById(elementID);
     elementTag.addEventListener('click',(event)=>{
@@ -102,9 +106,11 @@ function movePlayerOnWeapon(element,ID,player){
         if(listOfBlocksPLayerCanMoveOn.some((element)=>(element.id[0] === getJsonStructureOfElementWith(elementClicked).id[0])&&(element.id[1] === getJsonStructureOfElementWith(elementClicked).id[1]))){
             const movement = new Movement(Board,ID,elementClicked);
             Board = movement.pickupWeapon(elementID);
+            if(player.weapon !== "hands")
+                Board = movement.dropWeapon(player.weapon,ID);
             player.pickUp({
-                name:"sword",
-                power: 100
+                name:weaponName,
+                power: weaponPower
             });
             render(Board);
             updatePlayers();

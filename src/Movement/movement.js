@@ -1,4 +1,4 @@
-const {getJsonStructureOfElementWith} = require('../HelperFunctions/helperFunctions');
+const {getJsonStructureOfElementWith,getSymbol} = require('../HelperFunctions/helperFunctions');
 
 class Movement {
 
@@ -32,6 +32,18 @@ class Movement {
         copyWeapon.symbol = "*";
         this.board[playerPosition[1]][playerPosition[0]] = {...copyWeapon};
         this.board[weaponPosition[1]][weaponPosition[0]] = {...copyPlayer};
+        return this.board;
+    }
+
+    dropWeapon(weaponToDrop,elementID){
+        const block = getJsonStructureOfElementWith(elementID);
+        const blockPosition = [...block.id];
+        const weaponSymbol = getSymbol(weaponToDrop);
+        const weapon = {
+            id:blockPosition,
+            symbol:weaponSymbol
+        };
+        this.board[blockPosition[1]][blockPosition[0]] = {...weapon};
         return this.board;
     }
 
