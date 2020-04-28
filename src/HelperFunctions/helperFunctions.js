@@ -32,7 +32,7 @@ const getSymbol = (type) => {
 const getName = (symbol) => {
     let name;
     switch(symbol){
-        case "secondperson":
+        case "&":
             name="secondperson";
             break;
         case "$":
@@ -94,14 +94,19 @@ const isWeapon = (weapon) => {
 }
 
 const playerCanMoveOn = (element) => {
-    return isWeapon(element) || isBlock(element);
+    return isWeapon(element) || isBlock(element) || isPlayer(element);
 }
 const getArrayOfElementsRight = (columnPlayerIsOn,row) => {
     const arrayOfElementsThatPlayerCanMoveOn = [];
     for(let i = columnPlayerIsOn+1; i<=columnPlayerIsOn+3;i++){
         if(!(row[i] == undefined)){
             if(playerCanMoveOn(row[i])){
-                arrayOfElementsThatPlayerCanMoveOn.push(row[i]);
+                if(isPlayer(row[i])){
+                    arrayOfElementsThatPlayerCanMoveOn.push(row[i]);
+                    break;
+                }else{
+                    arrayOfElementsThatPlayerCanMoveOn.push(row[i]);
+                }
             }else{
                 break;
             }
@@ -115,7 +120,12 @@ const getArrayOfElementsLeft = (columnPlayerIsOn,row)=>{
     for(let i = columnPlayerIsOn-1; i>=columnPlayerIsOn-3;i--){
         if(!(row[i] == undefined)){
             if(playerCanMoveOn(row[i])){
-                arrayOfElementsThatPlayerCanMoveOn.push(row[i]);
+                if(isPlayer(row[i])){
+                    arrayOfElementsThatPlayerCanMoveOn.push(row[i]);
+                    break;
+                }else{
+                    arrayOfElementsThatPlayerCanMoveOn.push(row[i]);
+                }
             }else{
                 break;
             }
@@ -129,7 +139,12 @@ const getArrayOfElementsUp = (rowPlayerIsOn,columnPlayerIsOn,board)=>{
     for(let i = rowPlayerIsOn+1; i<=rowPlayerIsOn+3;i++){
         if(!(board[i] == undefined || board[i][columnPlayerIsOn]== undefined)){
             if(playerCanMoveOn(board[i][columnPlayerIsOn])){
-                arrayOfElementsThatPlayerCanMoveOn.push(board[i][columnPlayerIsOn]);
+                if(isPlayer(board[i][columnPlayerIsOn])){
+                    arrayOfElementsThatPlayerCanMoveOn.push(board[i][columnPlayerIsOn]);
+                    break;
+                }else{
+                    arrayOfElementsThatPlayerCanMoveOn.push(board[i][columnPlayerIsOn]);
+                }
             }else{
                 break;
             }
@@ -143,7 +158,12 @@ const getArrayOfElementsDown = (rowPlayerIsOn,columnPlayerIsOn,board) => {
     for(let i = rowPlayerIsOn-1; i>=rowPlayerIsOn-3;i--){
         if(!(board[i] == undefined || board[i][columnPlayerIsOn]== undefined)){
             if(playerCanMoveOn(board[i][columnPlayerIsOn])){
-                arrayOfElementsThatPlayerCanMoveOn.push(board[i][columnPlayerIsOn]);
+                if(isPlayer(board[i][columnPlayerIsOn])){
+                    arrayOfElementsThatPlayerCanMoveOn.push(board[i][columnPlayerIsOn]);
+                    break;
+                }else{
+                    arrayOfElementsThatPlayerCanMoveOn.push(board[i][columnPlayerIsOn]);
+                }
             }else{
                 break;
             }

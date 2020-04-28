@@ -72,6 +72,12 @@ function onClickListener(ID,list,player){
     list.forEach((element)=>{
         if(isBlock(element)){
             movePlayerOnBlock(element,ID);
+        }else if(isPlayer(element)){
+            const elementID = transformToID(element);
+            const elementTag = document.getElementById(elementID);
+            elementTag.addEventListener("click",()=>{
+                console.log("battle start");
+            })
         }else{
             movePlayerOnWeapon(element,ID,player);
         }
