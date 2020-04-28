@@ -25,12 +25,12 @@ const hero = new Player({
     weapon:"hands"
 });
 
-const villian = {
+const villian = new Player({
     name:"villian",
     health:100,
     power:50,
     weapon:"hands"
-}
+});
 const game = new Game(hero,villian);
 
 let HeroElement = document.getElementsByClassName("hero");
