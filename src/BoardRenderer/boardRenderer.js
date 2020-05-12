@@ -7,7 +7,7 @@ class BoardRenderer{
 
     renderBlock(){
         const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:grey;padding:2em;display:inline;border:1px solid white");
+        div.setAttribute("style", "background-color:white;padding:2em;display:inline;border:1px solid grey");
         return div;
     }
 
@@ -62,38 +62,43 @@ class BoardRenderer{
                         div.appendChild(block);
                         break;
                     case " ":
-                        const obstacle = this.renderObstacle();
+                        const obstacle = this.renderBlock();
                         obstacle.setAttribute("id",`obstacle_${Element.id[0]}-${Element.id[1]}`);
+                        obstacle.setAttribute("class","obstacle");
                         div.appendChild(obstacle);
                         break;
                     case "/":
-                        const sword = this.renderSword();
+                        const sword = this.renderBlock();
                         sword.setAttribute("id",`sword_${Element.id[0]}-${Element.id[1]}`);
+                        sword.setAttribute("class","sword");
                         div.appendChild(sword);
                         break;
                     case ":":
-                        const gun = this.renderGun();
+                        const gun = this.renderBlock();
                         gun.setAttribute("id",`gun_${Element.id[0]}-${Element.id[1]}`);
+                        gun.setAttribute("class","gun");
                         div.appendChild(gun);
                         break;
                     case "|":
-                        const knife = this.renderKnife();
+                        const knife = this.renderBlock();
                         knife.setAttribute("id",`knife_${Element.id[0]}-${Element.id[1]}`);
+                        knife.setAttribute("class","knife")
                         div.appendChild(knife);
                         break;
                     case "-":
-                        const bomb = this.renderBomb();
+                        const bomb = this.renderBlock();
                         bomb.setAttribute("id",`bomb_${Element.id[0]}-${Element.id[1]}`);
+                        bomb.setAttribute("class","bomb");
                         div.appendChild(bomb);
                         break;
                     case "$":
-                        const person = this.renderPerson('brown');
+                        const person = this.renderBlock();
                         person.setAttribute("id",`person_${Element.id[0]}-${Element.id[1]}`);
                         person.setAttribute("class","hero");
                         div.appendChild(person);
                         break;
                     case "&":
-                        const second_person = this.renderPerson('white');
+                        const second_person = this.renderBlock('white');
                         second_person.setAttribute("id",`secondperson_${Element.id[0]}-${Element.id[1]}`);
                         second_person.setAttribute("class","villian");
                         div.appendChild(second_person);

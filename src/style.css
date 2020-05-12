@@ -1,0 +1,39 @@
+html,body{
+    padding: 0;
+    margin: 0;
+    background-color: blueviolet;
+}
+
+.hero, .villian, .gun, .knife, .bomb, .sword, .obstacle {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.villian {
+    background-image: url('./assets/gameSprites/AllForOne.png');
+}
+
+.hero {
+    background-image: url('./assets/gameSprites/allmightsprite.png');
+}
+
+.gun {
+    background-image: url('./assets/gameSprites/gunSprite.png');
+}
+
+.knife {
+    background-image: url('./assets/gameSprites/knifeSprite.png');
+}
+
+.bomb {
+    background-image: url('./assets/gameSprites/bombSprite.png');
+}
+
+.sword {
+    background-image: url('./assets/gameSprites/swordSprite.png');
+}
+
+.obstacle{
+    background-image: url('./assets/gameSprites/obstacleSprite.png');
+}

@@ -1,3 +1,5 @@
+import './style.css';
+
 const {
     getJsonStructureOfElementWith,
     transformToID,
@@ -16,7 +18,7 @@ const BoardRenderer = require("./BoardRenderer/boardRenderer");
 const Movement = require("./Movement/movement");
 const Game = require("./Game/game");
 const Player = require("./Player/player");
-const boardGenerator = new BoardGenerator(8,8);
+const boardGenerator = new BoardGenerator();
 let Board = boardGenerator.generateGameBoardWithPlayers();
 const root = document.getElementById("root");
 render(Board);
