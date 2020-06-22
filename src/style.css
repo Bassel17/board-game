@@ -37,3 +37,7 @@ html,body{
 .obstacle{
     background-image: url('./assets/gameSprites/obstacleSprite.png');
 }
+
+.glowing-tiles{
+    border: solid 1px red !important;
+}

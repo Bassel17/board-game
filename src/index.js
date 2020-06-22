@@ -90,6 +90,7 @@ start();
 function movePlayerOnBlock(element,ID){
     const elementID = transformToID(element);
     const elementTag = document.getElementById(elementID);
+    elementTag.classList.add("glowing-tiles");
     elementTag.addEventListener('click',(event)=>{
         const elementClicked = event.target.id;
         if(listOfBlocksPLayerCanMoveOn.some((element)=>(element.id[0] === getJsonStructureOfElementWith(elementClicked).id[0])&&(element.id[1] === getJsonStructureOfElementWith(elementClicked).id[1]))){
@@ -109,6 +110,7 @@ function movePlayerOnWeapon(element,ID,player){
     const weaponPower = getPower(weaponName);
     const elementID = transformToID(element);
     const elementTag = document.getElementById(elementID);
+    elementTag.classList.add("glowing-tiles");
     elementTag.addEventListener('click',(event)=>{
         const elementClicked = event.target.id;
         if(listOfBlocksPLayerCanMoveOn.some((element)=>(element.id[0] === getJsonStructureOfElementWith(elementClicked).id[0])&&(element.id[1] === getJsonStructureOfElementWith(elementClicked).id[1]))){
