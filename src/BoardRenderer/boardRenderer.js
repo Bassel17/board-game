@@ -7,53 +7,17 @@ class BoardRenderer{
 
     renderBlock(){
         const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:white;padding:2em;display:inline;border:1px solid grey");
-        return div;
-    }
-
-    renderObstacle(){
-        const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:black;padding:2em;display:inline;border:1px solid white");
-        return div;
-    }
-
-    renderSword(){
-        const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:yellow;padding:2em;display:inline;border:1px solid white");
-        return div;
-    }
-
-    renderGun(){
-        const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:blue;padding:2em;display:inline;border:1px solid white");
-        return div;
-    }
-
-    renderKnife(){
-        const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:red;padding:2em;display:inline;border:1px solid white");
-        return div;
-    }
-
-    renderBomb(){
-        const div = this.document.createElement("div");
-        div.setAttribute("style", "background-color:pink;padding:2em;display:inline;border:1px solid white");
-        return div;
-    }
-
-    renderPerson(color){
-        const div = this.document.createElement("div");
-        div.setAttribute("style", `background-color:${color};padding:2em;display:inline;border:1px solid white`);
+        div.setAttribute("style", "background-color:white;padding:1.5em;display:inline;border:1px solid grey");
         return div;
     }
 
     renderStructure(){
         const parentContainer = this.document.createElement("div");
-        parentContainer.setAttribute("style", "width:100%;display:flex;flex-direction:column;");
+        parentContainer.setAttribute("class","parentContainer");
         const boardLength = this.board.length;
         for(let i=0;i<boardLength;i++){
             const div = this.document.createElement("div");
-            div.setAttribute("style", "width:100%;display:flex;flex-direction:row;");
+            div.setAttribute("class","parentContainerRow");
             this.board[i].forEach((Element)=>{
                 switch(Element.symbol){
                     case "*":

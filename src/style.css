@@ -4,6 +4,26 @@ html,body{
     background-color: blueviolet;
 }
 
+.container {
+    display: grid;
+    grid-template: 15vh 70vh 15vh / 20% 60% 20%;
+    justify-items: center;
+    align-items: center;
+}
+
+.parentContainer {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    display:flex;
+    flex-direction:column;
+}
+
+.parentContainerRow{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+}
+
 .hero, .villian, .gun, .knife, .bomb, .sword, .obstacle {
     background-position: center;
     background-repeat: no-repeat;
