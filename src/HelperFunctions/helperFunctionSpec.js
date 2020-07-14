@@ -68,17 +68,12 @@ describe("Tests the helper function", () => {
 
     it("return true if player can move on element false otherwise",()=>{
         const weapon = {symbol:"/"}
-        const notWeapon = {symbol:"&"}
+        const notWeapon = {symbol:" "}
         const block = {symbol:"*"}
 
         expect(playerCanMoveOn(weapon)).toBe(true);
         expect(playerCanMoveOn(block)).toBe(true);
         expect(playerCanMoveOn(notWeapon)).toBe(false);
-
-    });
-
-    it("return the elements a player can move on",()=>{
-        
 
     });
 
