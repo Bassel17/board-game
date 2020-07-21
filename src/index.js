@@ -84,6 +84,14 @@ function renderGame(){
     startBattle();
 }
 
+function renderWinner(playerName){
+    root.innerHTML = 
+    `<h1 class="winner-header">
+        winner is ${playerName} !!!
+    </h1>
+    <button onClick = "window.location.reload();">Restart Game</button>`;
+}
+
 function startBattle(){
     const buttonHero = document.getElementById('buttonHero');
     const buttonVillian = document.getElementById('buttonVillian');
@@ -91,19 +99,21 @@ function startBattle(){
         buttonHero.addEventListener('click',()=>{
             hero.attack(villian);
             if(villian.health <= 0){
-                alert("Herooo Winsss");
+                renderWinner("Hero");
+            }else{
+                game.moved();
+                renderGame();
             }
-            game.moved();
-            renderGame();
         })
     }else{
         buttonVillian.addEventListener('click',()=>{
             villian.attack(hero);
             if(hero.health <= 0){
-                alert("Villian Winsss");
+                renderWinner("Villian");
+            }else{
+                game.moved();
+                renderGame();
             }
-            game.moved();
-            renderGame();
         });
     }
 }

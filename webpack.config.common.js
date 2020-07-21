@@ -15,6 +15,10 @@ module.exports = {
       inject: true,
       template: path.resolve(__dirname, 'src', 'index.html'),
     }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    })
   ],
   module: {
     rules: [
