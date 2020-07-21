@@ -66,6 +66,48 @@ function render(board){
     root.appendChild(villianPlayer);
 }
 
+function renderGame(){
+    const boardRenderer = new BoardRenderer(Board,document);
+    const heroPlayer = boardRenderer.renderPlayerInfo(hero,'heroInfo');
+    const villianPlayer = boardRenderer.renderPlayerInfo(villian,'villianInfo');
+    const buttonHero = document.createElement("button");
+    const buttonVillian = document.createElement("button");
+    buttonHero.innerText = "attack";
+    buttonVillian.innerText = "attack";
+    buttonHero.setAttribute('id','buttonHero');
+    buttonVillian.setAttribute('id','buttonVillian');
+    root.innerHTML="";
+    heroPlayer.appendChild(buttonHero);
+    villianPlayer.appendChild(buttonVillian);
+    root.appendChild(heroPlayer);
+    root.appendChild(villianPlayer);
+    startBattle();
+}
+
+function startBattle(){
+    const buttonHero = document.getElementById('buttonHero');
+    const buttonVillian = document.getElementById('buttonVillian');
+    if(game.turn === "hero"){
+        buttonHero.addEventListener('click',()=>{
+            hero.attack(villian);
+            if(villian.health <= 0){
+                alert("Herooo Winsss");
+            }
+            game.moved();
+            renderGame();
+        })
+    }else{
+        buttonVillian.addEventListener('click',()=>{
+            villian.attack(hero);
+            if(hero.health <= 0){
+                alert("Villian Winsss");
+            }
+            game.moved();
+            renderGame();
+        });
+    }
+}
+
 function updatePlayers(){
     HeroElement = document.getElementsByClassName("hero");
     VillianElement = document.getElementsByClassName("villian");
@@ -83,7 +125,10 @@ function onClickListener(ID,list,player){
             const elementTag = document.getElementById(elementID);
             elementTag.classList.add("glowing-tiles");
             elementTag.addEventListener("click",()=>{
-                console.log("battle start");
+                render(Board);
+                listOfBlocksPLayerCanMoveOn = [];
+                game.moved();
+                renderGame();
             })
         }else{
             movePlayerOnWeapon(element,ID,player);

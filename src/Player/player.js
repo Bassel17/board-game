@@ -10,6 +10,10 @@ class Player {
         this.weapon = weapon.name;
         this.power = weapon.power;
     }
+
+    attack(player){
+        player.health = player.health - (this.power/10);
+    }
 }
 
 module.exports = Player;

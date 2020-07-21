@@ -64,7 +64,7 @@ class BoardRenderer{
                     case "|":
                         const knife = this.renderBlock();
                         knife.setAttribute("id",`knife_${Element.id[0]}-${Element.id[1]}`);
-                        knife.setAttribute("class","knife")
+                        knife.setAttribute("class","knife");
                         div.appendChild(knife);
                         break;
                     case "-":
