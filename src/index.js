@@ -21,7 +21,7 @@ const Player = require("./Player/player");
 const boardGenerator = new BoardGenerator();
 let Board = boardGenerator.generateGameBoardWithPlayers();
 const root = document.getElementById("root");
-render(Board);
+
 const hero = new Player({
     name:"hero",
     health:100,
@@ -36,7 +36,7 @@ const villian = new Player({
     weapon:"hands"
 });
 const game = new Game(hero,villian);
-
+render(Board);
 let HeroElement = document.getElementsByClassName("hero");
 let VillianElement = document.getElementsByClassName("villian");
 
@@ -58,8 +58,12 @@ function start(){
 function render(board){
     const boardRenderer = new BoardRenderer(board,document);
     const renderedBoard = boardRenderer.renderStructure();
+    const heroPlayer = boardRenderer.renderPlayerInfo(hero,'heroInfo')
+    const villianPlayer = boardRenderer.renderPlayerInfo(villian,'villianInfo');
     root.innerHTML="";
     root.appendChild(renderedBoard);
+    root.appendChild(heroPlayer);
+    root.appendChild(villianPlayer);
 }
 
 function updatePlayers(){
@@ -77,6 +81,7 @@ function onClickListener(ID,list,player){
         }else if(isPlayer(element)){
             const elementID = transformToID(element);
             const elementTag = document.getElementById(elementID);
+            elementTag.classList.add("glowing-tiles");
             elementTag.addEventListener("click",()=>{
                 console.log("battle start");
             })

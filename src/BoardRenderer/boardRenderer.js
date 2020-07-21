@@ -11,6 +11,24 @@ class BoardRenderer{
         return div;
     }
 
+    renderPlayerInfo(player,className){
+        const playerInfo = this.document.createElement("div");
+        playerInfo.setAttribute("class",className);
+        const div = this.document.createElement('div');
+        const health = this.document.createElement('span');
+        const weapon = this.document.createElement('span');
+        const power = this.document.createElement('span');
+        health.innerHTML = `<div>Health</div><div>${player.health}</div>`;
+        weapon.innerHTML = `<div>Weapon</div><div>${player.weapon}</div>`;
+        power.innerHTML = `<div>Power</div><div>${player.power}</div>`;
+        div.appendChild(health);
+        div.appendChild(weapon);
+        div.appendChild(power);
+        div.setAttribute("class","playerInformationContainer");
+        playerInfo.appendChild(div);
+        return playerInfo;
+    }
+
     renderStructure(){
         const parentContainer = this.document.createElement("div");
         parentContainer.setAttribute("class","parentContainer");
