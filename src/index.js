@@ -16,7 +16,12 @@ const Game = require("./Game/game");
 const Player = require("./Player/player");
 const root = document.getElementById("root");
 
-const $div = $('<button>Start Game !!</button>');
+const $div = $(`
+<div class = "start-screen">
+    <h1 class = "start-screen__title"> Hero VS Villian </h1>
+    <button class = "start-screen__button">Start Game !!</button>
+</div>
+`);
 $div.click(gameOn);
 $('#root').append($div);
 
@@ -88,10 +93,12 @@ function gameOn(){
 
     function renderWinner(playerName){
         root.innerHTML = 
-        `<h1 class="winner-header">
-            winner is ${playerName} !!!
+        `<div class = "start-screen">
+        <h1 class="winner-header">
+            winner is the ${playerName} !!!
         </h1>
-        <button onClick = "window.location.reload();">Restart Game</button>`;
+        <button onClick = "window.location.reload();">Restart Game</button>
+        </div>`;
     }
 
     function startBattle(){

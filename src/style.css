@@ -1,9 +1,13 @@
 html,body{
     padding: 0;
     margin: 0;
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
 }
-
+.start-screen{
+    grid-row: 2/3;
+    grid-column: 2/3;
+    text-align: center;
+}
 .container {
     display: grid;
     grid-template: 15vh 70vh 15vh / 20% 60% 20%;
@@ -32,7 +36,7 @@ html,body{
 
 .playerInformationContainer span{
     margin: 0 5px;
-    color:white;
+    color:black;
     text-align: center;
 }
 
