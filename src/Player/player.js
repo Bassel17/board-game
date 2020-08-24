@@ -4,6 +4,7 @@ class Player {
         this.health = playerData.health;
         this.power = playerData.power;
         this.weapon = playerData.weapon;
+        this.defence = 0;
     }
 
     pickUp(weapon){
@@ -12,7 +13,11 @@ class Player {
     }
 
     attack(player){
-        player.health = player.health - (this.power/10);
+        player.health = (player.health + player.defence) - (this.power/10);
+    }
+
+    defend(){
+        this.defence = 10;
     }
 }
 

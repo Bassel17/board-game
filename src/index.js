@@ -67,16 +67,26 @@ function gameOn(){
         const renderedBoard = boardRenderer.renderStructure();
         const heroPlayer = boardRenderer.renderPlayerInfo(hero,'heroInfo')
         const villianPlayer = boardRenderer.renderPlayerInfo(villian,'villianInfo');
+        const heroImage = document.createElement('div');
+        const villianImage = document.createElement('div');
+        heroImage.setAttribute("class",'heroImage');
+        villianImage.setAttribute("class",'villianImage');
         root.innerHTML="";
         root.appendChild(renderedBoard);
         root.appendChild(heroPlayer);
         root.appendChild(villianPlayer);
+        root.appendChild(heroImage);
+        root.appendChild(villianImage);
     }
 
     function renderGame(){
         const boardRenderer = new BoardRenderer(Board,document);
         const heroPlayer = boardRenderer.renderPlayerInfo(hero,'heroInfo');
         const villianPlayer = boardRenderer.renderPlayerInfo(villian,'villianInfo');
+        const heroImage = document.createElement('div');
+        const villianImage = document.createElement('div');
+        heroImage.setAttribute("class",'heroImage');
+        villianImage.setAttribute("class",'villianImage');
         const buttonHero = document.createElement("button");
         const buttonVillian = document.createElement("button");
         buttonHero.innerText = "attack";
@@ -88,6 +98,8 @@ function gameOn(){
         villianPlayer.appendChild(buttonVillian);
         root.appendChild(heroPlayer);
         root.appendChild(villianPlayer);
+        root.appendChild(heroImage);
+        root.appendChild(villianImage);
         startBattle();
     }
 
