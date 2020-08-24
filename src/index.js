@@ -89,13 +89,21 @@ function gameOn(){
         villianImage.setAttribute("class",'villianImage');
         const buttonHero = document.createElement("button");
         const buttonVillian = document.createElement("button");
+        const buttonHeroDefend = document.createElement("button");
+        const buttonVillianDefend = document.createElement("button");
         buttonHero.innerText = "attack";
         buttonVillian.innerText = "attack";
+        buttonHeroDefend.innerText = "defend";
+        buttonVillianDefend.innerText = "defend"
         buttonHero.setAttribute('id','buttonHero');
         buttonVillian.setAttribute('id','buttonVillian');
+        buttonHeroDefend.setAttribute('id','buttonHeroDefend');
+        buttonVillianDefend.setAttribute('id','buttonVillianDefend');
         root.innerHTML="";
         heroPlayer.appendChild(buttonHero);
+        heroPlayer.appendChild(buttonHeroDefend);
         villianPlayer.appendChild(buttonVillian);
+        villianPlayer.appendChild(buttonVillianDefend)
         root.appendChild(heroPlayer);
         root.appendChild(villianPlayer);
         root.appendChild(heroImage);
@@ -115,7 +123,9 @@ function gameOn(){
 
     function startBattle(){
         const buttonHero = document.getElementById('buttonHero');
+        const buttonHeroDefend = document.getElementById('buttonHeroDefend');
         const buttonVillian = document.getElementById('buttonVillian');
+        const buttonVillianDefend = document.getElementById('buttonVillianDefend');
         if(game.turn === "hero"){
             buttonHero.addEventListener('click',()=>{
                 hero.attack(villian);
@@ -123,9 +133,16 @@ function gameOn(){
                     renderWinner("Hero");
                 }else{
                     game.moved();
+                    villian.defence = 0;
                     renderGame();
                 }
-            })
+            });
+
+            buttonHeroDefend.addEventListener('click',()=>{
+                hero.defend();
+                game.moved();
+                renderGame();
+            });
         }else{
             buttonVillian.addEventListener('click',()=>{
                 villian.attack(hero);
@@ -133,8 +150,15 @@ function gameOn(){
                     renderWinner("Villian");
                 }else{
                     game.moved();
+                    hero.defence = 0;
                     renderGame();
                 }
+            });
+
+            buttonVillianDefend.addEventListener('click',()=>{
+                villian.defend();
+                game.moved();
+                renderGame();
             });
         }
     }

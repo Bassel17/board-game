@@ -13,11 +13,11 @@ class Player {
     }
 
     attack(player){
-        player.health = (player.health + player.defence) - (this.power/10);
+        player.health = player.health - (this.power/10) + player.defence;
     }
 
     defend(){
-        this.defence = 10;
+        this.defence = 5;
     }
 }
 
