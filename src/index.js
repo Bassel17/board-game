@@ -127,6 +127,10 @@ function gameOn(){
         const buttonVillian = document.getElementById('buttonVillian');
         const buttonVillianDefend = document.getElementById('buttonVillianDefend');
         if(game.turn === "hero"){
+            buttonVillian.setAttribute('disabled',true);
+            buttonVillianDefend.setAttribute('disabled',true);
+            buttonHero.removeAttribute('disabled');
+            buttonHeroDefend.removeAttribute('disabled');
             buttonHero.addEventListener('click',()=>{
                 hero.attack(villian);
                 if(villian.health <= 0){
@@ -144,6 +148,11 @@ function gameOn(){
                 renderGame();
             });
         }else{
+            buttonVillian.removeAttribute('disabled');
+            buttonVillianDefend.removeAttribute('disabled');
+            buttonHero.setAttribute('disabled',true);
+            buttonHeroDefend.setAttribute('disabled',true);
+
             buttonVillian.addEventListener('click',()=>{
                 villian.attack(hero);
                 if(hero.health <= 0){
